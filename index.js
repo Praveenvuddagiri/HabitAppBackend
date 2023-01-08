@@ -1,8 +1,15 @@
 
 const express = require('express');
-require('dotenv').config();
-const { errorHandler } = require('./middlewares/errorMiddleware');
+
+
 const connectWithDb = require('./config/db');
+require('dotenv').config();
+
+//connect with database
+connectWithDb();
+
+
+const { errorHandler } = require('./middlewares/errorMiddleware');
 const port = process.env.PORT || 4000;
 
 const app = express();
@@ -16,7 +23,6 @@ app.use(cors({
     origin: '*'
 }));
 
-connectWithDb();
 
 app.use('/api/habits', require('./routes/habitRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
