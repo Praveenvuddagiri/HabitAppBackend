@@ -5,7 +5,6 @@ const connectWithDb = require('./config/db');
 const dotenv = require("dotenv").config();
 
 
-//connect with database
 connectWithDb();
 
 
